@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="desktop"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <title>start</title>
+<meta name="generator" content="DokuWiki">
+<meta name="theme-color" content="#008800">
+<meta name="robots" content="noindex,nofollow">
+<meta name="keywords" content="start">
+<link rel="search" type="application/opensearchdescription+xml" href="http://10.0.2.15:8000/lib/exe/opensearch.php" title="How to create Python Flask Application, using FTP, GITHUB, and Apache2 Server">
+<link rel="start" href="http://10.0.2.15:8000/">
+<link rel="contents" href="http://10.0.2.15:8000/doku.php?id=start&amp;do=index" title="Sitemap">
+<link rel="manifest" href="http://10.0.2.15:8000/lib/exe/manifest.php">
+<link rel="alternate" type="application/rss+xml" title="Recent Changes" href="http://10.0.2.15:8000/feed.php">
+<link rel="alternate" type="application/rss+xml" title="Current namespace" href="http://10.0.2.15:8000/feed.php?mode=list&amp;ns=">
+<link rel="alternate" type="text/html" title="Plain HTML" href="http://10.0.2.15:8000/doku.php?do=export_xhtml&amp;id=start">
+<link rel="alternate" type="text/plain" title="Wiki Markup" href="http://10.0.2.15:8000/doku.php?do=export_raw&amp;id=start">
+<link rel="canonical" href="http://10.0.2.15:8000/">
+<link rel="stylesheet" href="218056701_NYEMBE_AJ_2024_WikiPage_files/css.css">
+<!--[if gte IE 9]><!-->
+<script>/*<![CDATA[*/var NS='';var JSINFO = {"id":"start","namespace":"","ACT":"export_xhtml","useHeadingNavigation":0,"useHeadingContent":0};
+/*!]]>*/</script>
+<script src="218056701_NYEMBE_AJ_2024_WikiPage_files/jquery.js" defer="defer">/*<![CDATA[*/
+/*!]]>*/</script>
+<script src="218056701_NYEMBE_AJ_2024_WikiPage_files/js.js" defer="defer">/*<![CDATA[*/
+/*!]]>*/</script>
+<!--<![endif]-->
+</head>
+<body>
+<div class="dokuwiki export">
+<!-- TOC START -->
+<div id="dw__toc" class="dw__toc">
+<h3 class="toggle open" style="cursor: pointer;"><strong><span>−</span></strong>Table of Contents</h3>
+<div style="" aria-expanded="true">
+
+<ul class="toc">
+<li class="level1"><div class="li"><a href="#informatics_project_s_server">Informatics Project's Server</a></div></li>
+<li class="level1"><div class="li"><a href="#overview_of_system">Overview of System</a></div>
+<ul class="toc">
+<li class="clear">
+<ul class="toc">
+<li class="level3"><div class="li"><a href="#github_repository">Github Repository</a></div></li>
+</ul>
+</li>
+<li class="level2"><div class="li"><a href="#accessing_application">Accessing application</a></div></li>
+</ul>
+</li>
+<li class="level1"><div class="li"><a href="#installation_of_linux_distro_opensuse">Installation of Linux Distro OpenSuse</a></div></li>
+<li class="level1"><div class="li"><a href="#installation_of_ftp_on_opensuse_tumbleweed">Installation of FTP on OpenSuse Tumbleweed</a></div>
+<ul class="toc">
+<li class="level2"><div class="li"><a href="#optionalconfigure_ssl_tls_on_ftp">OPTIONAL: Configure SSL/TLS on FTP</a></div></li>
+</ul>
+</li>
+<li class="level1"><div class="li"><a href="#introduction_to_flask">Introduction to Flask</a></div>
+<ul class="toc">
+<li class="level2"><div class="li"><a href="#create_flask_application">Create Flask Application</a></div></li>
+<li class="level2"><div class="li"><a href="#customize_application_to_use_ftp">Customize Application to use FTP</a></div>
+<ul class="toc">
+<li class="level3"><div class="li"><a href="#testing">Testing</a></div></li>
+</ul>
+</li>
+<li class="level2"><div class="li"><a href="#configure_flask_application_for_https">Configure Flask Application for HTTPS</a></div></li>
+</ul>
+</li>
+<li class="level1"><div class="li"><a href="#back-up_store_on_cloud_github">Back-up store on Cloud (Github)</a></div>
+<ul class="toc">
+<li class="level2"><div class="li"><a href="#configuring_github">Configuring Github</a></div></li>
+<li class="level2"><div class="li"><a href="#integrating_github_into_flask_application">Integrating Github into Flask Application</a></div></li>
+</ul>
+</li>
+<li class="level1"><div class="li"><a href="#accessing_your_flask_application_on_host_os">Accessing Your Flask Application on Host OS</a></div>
+<ul class="toc">
+<li class="level2"><div class="li"><a href="#installing_firewalld">Installing FirewallD</a></div></li>
+<li class="level2"><div class="li"><a href="#allowing_connections_on_port">Allowing connections on port</a></div></li>
+<li class="level2"><div class="li"><a href="#port_forwarding">Port Forwarding</a></div></li>
+</ul>
+</li>
+<li class="level1"><div class="li"><a href="#enjoy_make_sure_you_explore_all_things_mentioned_here_further_in_your_own_time_and_switch_to_linux">Enjoy!! Make sure you explore all things mentioned here further in your own time. And SWITCH TO LINUX!!</a></div></li>
+</ul>
+</div>
+</div>
+<!-- TOC END -->
+
+<h1 class="sectionedit1" id="informatics_project_s_server">Informatics Project's Server</h1>
+<div class="level1">
+
+<p>
+Introducing an interactive web management system designed specifically 
+for Informatics 3 students, allowing teams to easily upload their web 
+pages utilizing the secure VSFTPD protocol with SSL encryption, assuring
+ data integrity and secrecy throughout file transfers. This complete 
+platform also has a built-in blogging system, allowing each group to 
+share their project path and observations. At its core, the system is 
+driven by the strong Flask framework, which was rigorously constructed 
+in Python to provide a dynamic and responsive user interface. SSL 
+encryption strengthens communication routes, protecting crucial data 
+exchanges. Furthermore, project collaboration and accountability are 
+improved through seamless connection with a source repository that 
+includes extensive backup functionality. Using the power of GitHub, 
+teams benefit from robust version control methods.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Informatics Project&#039;s Server&quot;,&quot;hid&quot;:&quot;informatics_project_s_server&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:1,&quot;range&quot;:&quot;1-927&quot;} -->
+<h1 class="sectionedit2" id="overview_of_system">Overview of System</h1>
+<div class="level1">
+
+<p>
+The VSFTPD server is hosted on a VirtualBox Virtual Machine, running 
+Linux Distro OpenSuse Tumbleweed. The virtual machine is running on a 
+Windows 10 Host Operating System. 
+</p>
+
+<p>
+See below image for diagram of how system communicates:
+<a href="http://10.0.2.15:8000/lib/exe/detail.php?id=start&amp;media=blog_diagram.png" class="media" title="blog_diagram.png"><img src="218056701_NYEMBE_AJ_2024_WikiPage_files/blog_diagram.png" class="media" loading="lazy" alt=""></a>
+</p>
+
+<p>
+The Flask Application handles all of the business logic of the 
+application. Along with the data store, which is the data layer of the 
+application. The database stores the users and posts made by the users 
+of the application. It utilizes SQLite, which is a lightweight database 
+used for small-scale data storage. To read more about SQLite, go to this
+ link: <a href="https://www.sqlite.org/docs.html" class="urlextern" title="https://www.sqlite.org/docs.html" rel="ugc nofollow">https://www.sqlite.org/docs.html</a>
+</p>
+
+<p>
+Flask is a lightweight and flexible web framework for Python. It is 
+designed to make getting started with web development quick and easy, 
+while also providing the flexibility to scale up to complex 
+applications.
+</p>
+
+<p>
+<strong>Key Features</strong>:
+</p>
+<ol>
+<li class="level1"><div class="li"> Easy to Get Started: Flask is known 
+for its simplicity and ease of use. With just a few lines of code, you 
+can create a basic web application.</div>
+</li>
+<li class="level1"><div class="li"> Extensible: Despite its simplicity, 
+Flask is highly extensible. You can easily add extensions to Flask to 
+integrate with databases, authentication systems, and other third-party 
+services</div>
+</li>
+<li class="level1"><div class="li"> Built-in Development Server: Flask 
+comes with a built-in development server, making it easy to test your 
+applications locally before deploying them to a production server.</div>
+</li>
+</ol>
+
+<p>
+<strong>When to use Flask:</strong>
+</p>
+<ul>
+<li class="level1"><div class="li"> Prototyping and Rapid Development: 
+Flask is ideal for prototyping new ideas and rapidly developing small to
+ medium-sized web applications.</div>
+</li>
+<li class="level1"><div class="li"> RESTful APIs: Flask is well-suited for building RESTful APIs due to its lightweight nature and support for HTTP methods.</div>
+</li>
+</ul>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Overview of System&quot;,&quot;hid&quot;:&quot;overview_of_system&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:2,&quot;range&quot;:&quot;928-2646&quot;} -->
+<h3 class="sectionedit3" id="github_repository">Github Repository</h3>
+<div class="level3">
+
+<p>
+GitHub serves as the primary source control repository, providing comprehensive backup capabilities alongside the <abbr title="File Transfer Protocol">FTP</abbr>
+ server. I already owned a Github account, and created a new repository 
+for the backup of these files on git. While alternative platforms like 
+GitLab and Bitbucket offer similar functionalities, i was more familiar 
+with Github. 
+</p>
+
+<p>
+To familiarize yourself with Github, click this link: <a href="https://github.com/" class="urlextern" title="https://github.com/" rel="ugc nofollow">https://github.com/</a>
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Github Repository&quot;,&quot;hid&quot;:&quot;github_repository&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:3,&quot;range&quot;:&quot;2647-3097&quot;} -->
+<h2 class="sectionedit4" id="accessing_application">Accessing application</h2>
+<div class="level2">
+
+<p>
+The application can be accessed on the virtual machine running the application and <abbr title="File Transfer Protocol">FTP</abbr>
+ server. Other avenues are other devices on the same network. Utilizing 
+VirtualBox's port forwarding we are able to access the website and the <abbr title="File Transfer Protocol">FTP</abbr> server from an external device.
+</p>
+
+<p>
+<a href="http://10.0.2.15:8000/lib/exe/detail.php?id=start&amp;media=hostvm_diagram.png" class="media" title="hostvm_diagram.png"><img src="218056701_NYEMBE_AJ_2024_WikiPage_files/hostvm_diagram.png" class="media" loading="lazy" alt=""></a>
+</p>
+
+<p>
+You can read up more on port forwarding here: <a href="https://nsrc.org/workshops/2014/sanog23-virtualization/raw-attachment/wiki/Agenda/ex-virtualbox-portforward-ssh.htm" class="urlextern" title="https://nsrc.org/workshops/2014/sanog23-virtualization/raw-attachment/wiki/Agenda/ex-virtualbox-portforward-ssh.htm" rel="ugc nofollow">https://nsrc.org/workshops/2014/sanog23-virtualization/raw-attachment/wiki/Agenda/ex-virtualbox-portforward-ssh.htm</a>
+</p>
+
+<p>
+We will further explore port forwarding and how to configure this setup in this Wiki. 
+</p>
+
+<p>
+Now, lets get into it.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Accessing application&quot;,&quot;hid&quot;:&quot;accessing_application&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:4,&quot;range&quot;:&quot;3098-3698&quot;} -->
+<h1 class="sectionedit5" id="installation_of_linux_distro_opensuse">Installation of Linux Distro OpenSuse</h1>
+<div class="level1">
+
+<p>
+We will be working on Linux Distro OpenSuse Tumbleweed for this project.
+ One of the reasons i picked it, was that it works well with being a 
+server and offers a user-friendly. Comes with YaST, which helps in 
+installing software and managing software. We will be using a virtualbox
+ virtual machine to use OpenSuse, if you have not configured it yet, 
+check out this tutorial on how to get started: <a href="https://www.youtube.com/watch?v=nJ--xgeM7jM" class="urlextern" title="https://www.youtube.com/watch?v=nJ--xgeM7jM" rel="ugc nofollow">https://www.youtube.com/watch?v=nJ--xgeM7jM</a>
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Installation of Linux Distro OpenSuse&quot;,&quot;hid&quot;:&quot;installation_of_linux_distro_opensuse&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:5,&quot;range&quot;:&quot;3699-4193&quot;} -->
+<h1 class="sectionedit6" id="installation_of_ftp_on_opensuse_tumbleweed">Installation of FTP on OpenSuse Tumbleweed</h1>
+<div class="level1">
+
+<p>
+Once everything has been installed and the OpenSuse image is running on your virtualbox. We can configure <abbr title="File Transfer Protocol">FTP</abbr> on OpenSuse.
+</p>
+
+<p>
+<strong><em>Installation via <abbr title="Graphical User Interface">GUI</abbr></em></strong><br>
+
+First lets start with OpenSuse YaST installation. Navigate to this link: <a href="https://software.opensuse.org/download/package?package=vsftpd&amp;project=network" class="urlextern" title="https://software.opensuse.org/download/package?package=vsftpd&amp;project=network" rel="ugc nofollow">https://software.opensuse.org/download/package?package=vsftpd&amp;project=network</a>
+This will install vsftpd on your machine through <abbr title="Graphical User Interface">GUI</abbr>
+</p>
+
+<p>
+<strong><em>Installation via Terminal</em></strong><br>
+
+We will make use of zypper for installation of vsftpd and other programs moving forward:
+</p>
+<pre class="code">sudo zypper update
+sudo zypper refresh</pre>
+
+<p>
+Then install vsftpd on the terminal
+</p>
+<pre class="code">sudo zypper install vsftpd</pre>
+
+<p>
+<strong>Configure vsftpd</strong><br>
+
+vsftpd's configuration file is located at /etc/vsftpd.conf. You can use any text editor to modify it. For example:
+</p>
+<pre class="code">sudo nano /etc/vsftpd.conf</pre>
+
+<p>
+Configure some basic configurations:
+</p>
+<pre class="file">listen=YES
+ftpd_banner=Welcome to My &lt;Your_own_unique_name&gt; Server
+chroot_local_user=YES
+anonymous_enable=NO
+local_enable=YES
+write_enable=YES
+local_root=/srv/ftp
+use_localtime=YES</pre>
+
+<p>
+You can read up more on these configurations: <a href="https://linux.die.net/man/5/vsftpd.conf" class="urlextern" title="https://linux.die.net/man/5/vsftpd.conf" rel="ugc nofollow">https://linux.die.net/man/5/vsftpd.conf</a>
+Close then save your file. 
+</p>
+
+<p>
+<strong>Open <abbr title="File Transfer Protocol">FTP</abbr> Port in firewall</strong><br>
+
+If you have a firewall enabled, you need to allow <abbr title="File Transfer Protocol">FTP</abbr> traffic. Open port 21 for <abbr title="File Transfer Protocol">FTP</abbr> control connections:
+</p>
+<pre class="code">sudo firewall-cmd --zone=public --add-port=21/tcp --permanent
+sudo firewall-cmd --reload</pre>
+
+<p>
+<strong>Create group for <abbr title="File Transfer Protocol">FTP</abbr> usage by users</strong><br>
+
+First, create a group that will be used for <abbr title="File Transfer Protocol">FTP</abbr> users, if you don't have it already
+</p>
+<pre class="code">sudo groupadd ftpusers</pre>
+
+<p>
+Add users to the group <em class="u">Remember this username, we will be using for accessing the server</em>
+</p>
+<pre class="code">sudo usermod -aG ftpusers username</pre>
+
+<p>
+You need to ensure that the <abbr title="File Transfer Protocol">FTP</abbr>
+ directory and its contents have the correct permissions for the 
+ftpusers group to access them. Typically, you would change the ownership
+ of the <abbr title="File Transfer Protocol">FTP</abbr> directory to the root user and the ftpusers group
+</p>
+<pre class="code">sudo chown root:ftpusers /srv/ftp</pre>
+
+<p>
+Then set permissions for read and write for 'ftpusers' group
+</p>
+<pre class="code">sudo chmod 775 /srv/ftp</pre>
+
+<p>
+<strong>Start and Enable vsftpd service</strong><br>
+
+Enable it to start at boot
+</p>
+<pre class="code">sudo systemctl start vsftpd.service
+sudo systemctl enable vsftpd.service</pre>
+
+<p>
+Check the status:
+</p>
+<pre class="code">sudo systemctl status vsftpd.service</pre>
+
+<p>
+Should show all greens <img src="218056701_NYEMBE_AJ_2024_WikiPage_files/smile2.svg" class="icon smiley" alt="=)">
+</p>
+
+<p>
+<strong>Access ftp server</strong><br>
+
+You can make use of FileZilla, which is an <abbr title="File Transfer Protocol">FTP</abbr> Administrator that offers a <abbr title="Graphical User Interface">GUI</abbr> interface to your server. 
+Alternatively, you can use the terminal to login using your user credentials 
+</p>
+<pre class="code">ftp &lt;ftp_server_name&gt;</pre>
+
+<p>
+You will be prompted to enter the username along with the password of 
+the user you are trying to authenticate to. You should get the following
+ output:
+</p>
+<pre class="code">220 Welcome to My FTP Server
+Name (ftp.example.com:user): 
+ftp&gt;</pre>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Installation of FTP on OpenSuse Tumbleweed&quot;,&quot;hid&quot;:&quot;installation_of_ftp_on_opensuse_tumbleweed&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:6,&quot;range&quot;:&quot;4194-7057&quot;} -->
+<h2 class="sectionedit7" id="optionalconfigure_ssl_tls_on_ftp">OPTIONAL: Configure SSL/TLS on FTP</h2>
+<div class="level2">
+
+<p>
+To secure your <abbr title="File Transfer Protocol">FTP</abbr> communication, you will need to enable SSL encryption to your communication. 
+</p>
+<ul>
+<li class="level1"><div class="li"> A <em class="u">Self-Signed SSL/TLS Certificate</em>
+ is not signed by a trust, public CA authority, but instead the 
+developer or organization that is responsible for the website. We make 
+use of these certificates as we are using them for development</div>
+</li>
+<li class="level1"><div class="li"> You can read up more on SSL/TLS here: <a href="https://www.entrust.com/resources/learn/what-is-a-self-signed-certificate" class="urlextern" title="https://www.entrust.com/resources/learn/what-is-a-self-signed-certificate" rel="ugc nofollow">https://www.entrust.com/resources/learn/what-is-a-self-signed-certificate</a></div>
+</li>
+</ul>
+
+<p>
+If you do not have the folder in '/etc/ssl/private' already in your filesystem, run the command below to create the folder
+</p>
+<pre class="code">sudo mkdir /etc/ssl/private</pre>
+
+<p>
+We will use a self-signed SSL:
+</p>
+<pre class="code">openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/vsftpd.key -out /etc/ssl/certs/vsftpd.crt</pre>
+
+<p>
+By creating SSL encryption, we protect sensitive data from interception 
+and tampering, ensuring secure and private communication between the 
+server and the client's browser. You can learn about the command above 
+from here: <a href="https://www.digicert.com/kb/ssl-support/openssl-quick-reference-guide.htm" class="urlextern" title="https://www.digicert.com/kb/ssl-support/openssl-quick-reference-guide.htm" rel="ugc nofollow">https://www.digicert.com/kb/ssl-support/openssl-quick-reference-guide.htm</a>
+</p>
+
+<p>
+You will be asked a couple of prompts, you can also leave them blank:
+</p>
+<pre class="code">Country Name (2 letter code) [XX]:ZA
+State or Province Name (full name) []:Gauteng
+Locality Name (eg, city) [Default City]:Johannesburg
+Organization Name (eg, company) [Default Company Ltd]:
+Organizational Unit Name (eg, section) []:
+Common Name (eg, your name or your server's hostname) []:junior
+Email Address []:admin@student.uj.ac.za</pre>
+
+<p>
+<strong>Configure <abbr title="File Transfer Protocol">FTP</abbr> to use SSL key and cert</strong>: You can use any text editor of your choice
+</p>
+<pre class="code">sudo nano /etc/vsftpd/vsftpd.conf</pre>
+
+<p>
+Add below configurations to the bottom of the vsftpd.conf file
+</p>
+<pre class="file">ssl_enable=YES
+allow_anon_ssl=NO
+force_local_data_ssl=YES
+force_local_logins_ssl=YES
+ssl_tlsv1_1=YES
+ssl_sslv2=NO
+ssl_sslv3=NO
+rsa_cert_file=/etc/ssl/certs/vsftpd.crt
+rsa_private_key_file=/etc/ssl/private/vsftpd.key
+seccomp_sandbox=NO</pre>
+
+<p>
+Exit and save the file
+</p>
+
+<p>
+Restart vsftpd
+</p>
+<pre class="code">sudo systemctl restart vsftpd.service</pre>
+
+<p>
+We have not configured out <abbr title="File Transfer Protocol">FTP</abbr> successfully and we are able to login and interact in the <abbr title="File Transfer Protocol">FTP</abbr> shell. 
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;OPTIONAL: Configure SSL\/TLS on FTP&quot;,&quot;hid&quot;:&quot;optionalconfigure_ssl_tls_on_ftp&quot;,&quot;codeblockOffset&quot;:13,&quot;secid&quot;:7,&quot;range&quot;:&quot;7058-9257&quot;} -->
+<h1 class="sectionedit8" id="introduction_to_flask">Introduction to Flask</h1>
+<div class="level1">
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Introduction to Flask&quot;,&quot;hid&quot;:&quot;introduction_to_flask&quot;,&quot;codeblockOffset&quot;:19,&quot;secid&quot;:8,&quot;range&quot;:&quot;9258-9294&quot;} -->
+<h2 class="sectionedit9" id="create_flask_application">Create Flask Application</h2>
+<div class="level2">
+
+<p>
+You will need to create a directory to place the Flask application in, choose any, i will go with the following:
+</p>
+<pre class="code">sudo mkdir ~/Desktop/FlaskApp
+cd ~/Desktop/FlaskApp
+python3 -m venv .venv</pre>
+
+<p>
+<strong>Activate the Environment</strong><br>
+
+Before you work on your project, activate the corresponding environment:
+</p>
+<pre class="code">. .venv/bin/activate</pre>
+
+<p>
+You should see this output once the environment is activated
+</p>
+<pre class="code">$(.venv)root@localhost:</pre>
+
+<p>
+<strong>Install Flask</strong><br>
+
+Within the activated environment, use the following command to install Flask:
+</p>
+<pre class="code">pip install flask</pre>
+
+<p>
+<strong>Create Flask App</strong>
+</p>
+
+<p>
+Create a new Python file for your Flask application. For example, let's name it 'run.py'
+Open any IDE(PyCharm Community: <a href="https://www.jetbrains.com/help/pycharm/installation-guide.html" class="urlextern" title="https://www.jetbrains.com/help/pycharm/installation-guide.html" rel="ugc nofollow">https://www.jetbrains.com/help/pycharm/installation-guide.html</a>) or Text Editor(Visual Studio Code: <a href="https://code.visualstudio.com/download" class="urlextern" title="https://code.visualstudio.com/download" rel="ugc nofollow">https://code.visualstudio.com/download</a>) to write some code in
+</p>
+<pre class="code python"><span class="kw1">from</span> flask <span class="kw1">import</span> Flask
+&nbsp;
+app <span class="sy0">=</span> Flask<span class="br0">(</span>__name__<span class="br0">)</span>
+&nbsp;
+<span class="sy0">@</span>app.<span class="me1">route</span><span class="br0">(</span><span class="st0">'/'</span><span class="br0">)</span>
+<span class="kw1">def</span> index<span class="br0">(</span><span class="br0">)</span>:
+    <span class="kw1">return</span> <span class="st0">'Hello, World!'</span>
+&nbsp;
+<span class="kw1">if</span> __name__ <span class="sy0">==</span> <span class="st0">'__main__'</span>:
+    app.<span class="me1">run</span><span class="br0">(</span>debug<span class="sy0">=</span><span class="kw2">True</span><span class="br0">)</span></pre>
+
+<p>
+Run the application by running below command in terminal:
+</p>
+<pre class="code">python run.py</pre>
+
+<p>
+You should see output similar to the following:
+</p>
+<pre class="code"> * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)</pre>
+
+<p>
+You can access the application by navigating to <a href="http://127.0.0.1:5000/" class="urlextern" title="http://127.0.0.1:5000/" rel="ugc nofollow">http://127.0.0.1:5000/</a> on your browser
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Create Flask Application&quot;,&quot;hid&quot;:&quot;create_flask_application&quot;,&quot;codeblockOffset&quot;:19,&quot;secid&quot;:9,&quot;range&quot;:&quot;9295-10693&quot;} -->
+<h2 class="sectionedit10" id="customize_application_to_use_ftp">Customize Application to use FTP</h2>
+<div class="level2">
+
+<p>
+Flask comes with built-in modules that are made to help you create 
+better web applications. Earlier on when we installed Flask, it came 
+with the 'ftplib' module, which will aid us in connecting with our <abbr title="File Transfer Protocol">FTP</abbr> server.
+</p>
+
+<p>
+Let's add some code that will help us connect to the server, with a few 
+helper functions to upload to the server and download from the server.
+</p>
+<pre class="code python"><span class="kw1">from</span> flask <span class="kw1">import</span> Flask<span class="sy0">,</span> request<span class="sy0">,</span> render_template
+<span class="kw1">from</span> <span class="kw3">ftplib</span> <span class="kw1">import</span> FTP
+&nbsp;
+app <span class="sy0">=</span> Flask<span class="br0">(</span>__name__<span class="br0">)</span>
+&nbsp;
+<span class="co1"># FTP server configuration</span>
+FTP_HOST <span class="sy0">=</span> <span class="st0">'ftp.example.com'</span>
+FTP_USER <span class="sy0">=</span> <span class="st0">'username'</span> <span class="co1"># Username you will use to access the FTP Server</span>
+FTP_PASS <span class="sy0">=</span> <span class="st0">'password'</span> <span class="co1"># Same with the password</span>
+&nbsp;
+<span class="co1"># Function to upload file to FTP server</span>
+<span class="kw1">def</span> upload_file_to_ftp<span class="br0">(</span>file_path<span class="sy0">,</span> file_name<span class="br0">)</span>:
+    <span class="kw1">with</span> FTP<span class="br0">(</span>FTP_HOST<span class="sy0">,</span> FTP_USER<span class="sy0">,</span> FTP_PASS<span class="br0">)</span> <span class="kw1">as</span> ftp:
+        <span class="kw1">with</span> <span class="kw2">open</span><span class="br0">(</span>file_path<span class="sy0">,</span> <span class="st0">'rb'</span><span class="br0">)</span> <span class="kw1">as</span> <span class="kw2">file</span>:
+            ftp.<span class="me1">storbinary</span><span class="br0">(</span>f<span class="st0">'STOR {file_name}'</span><span class="sy0">,</span> <span class="kw2">file</span><span class="br0">)</span>
+&nbsp;
+<span class="co1"># Function to download file from FTP server</span>
+<span class="kw1">def</span> download_file_from_ftp<span class="br0">(</span>file_name<span class="sy0">,</span> destination_path<span class="br0">)</span>:
+    <span class="kw1">with</span> FTP<span class="br0">(</span>FTP_HOST<span class="sy0">,</span> FTP_USER<span class="sy0">,</span> FTP_PASS<span class="br0">)</span> <span class="kw1">as</span> ftp:
+        ftp_file_path <span class="sy0">=</span> f<span class="st0">'/srv/ftp/{file_name}'</span>
+        <span class="co1"># Create directory if it doesn't exist</span>
+        <span class="kw1">if</span> <span class="kw1">not</span> <span class="kw3">os</span>.<span class="me1">path</span>.<span class="me1">exists</span><span class="br0">(</span>destination_path<span class="br0">)</span>:
+            <span class="kw3">os</span>.<span class="me1">makedirs</span><span class="br0">(</span>destination_path<span class="br0">)</span>
+&nbsp;
+        <span class="co1"># Local path where the file will be saved</span>
+        local_file_path <span class="sy0">=</span> <span class="kw3">os</span>.<span class="me1">path</span>.<span class="me1">join</span><span class="br0">(</span>destination_path<span class="sy0">,</span> <span class="kw3">os</span>.<span class="me1">path</span>.<span class="me1">basename</span><span class="br0">(</span>file_name<span class="br0">)</span><span class="br0">)</span>
+        <span class="kw1">with</span> <span class="kw2">open</span><span class="br0">(</span>destination_path<span class="sy0">,</span> <span class="st0">'wb'</span><span class="br0">)</span> <span class="kw1">as</span> <span class="kw2">file</span>:
+            ftp.<span class="me1">retrbinary</span><span class="br0">(</span>f<span class="st0">'RETR {ftp_file_path}'</span><span class="sy0">,</span> <span class="kw2">file</span>.<span class="me1">write</span><span class="br0">)</span></pre>
+
+<p>
+Program your routes. 
+</p>
+<pre class="code python"><span class="sy0">@</span>app.<span class="me1">route</span><span class="br0">(</span><span class="st0">'/'</span><span class="br0">)</span>
+<span class="kw1">def</span> index<span class="br0">(</span><span class="br0">)</span>:
+    <span class="kw1">return</span> render_template<span class="br0">(</span><span class="st0">'index.html'</span><span class="br0">)</span>
+&nbsp;
+<span class="sy0">@</span>app.<span class="me1">route</span><span class="br0">(</span><span class="st0">'/upload'</span><span class="sy0">,</span> methods<span class="sy0">=</span><span class="br0">[</span><span class="st0">'POST'</span><span class="br0">]</span><span class="br0">)</span>
+<span class="kw1">def</span> upload<span class="br0">(</span><span class="br0">)</span>:
+    <span class="kw1">if</span> <span class="st0">'file'</span> <span class="kw1">not</span> <span class="kw1">in</span> request.<span class="me1">files</span>:
+        <span class="kw1">return</span> <span class="st0">'No file part'</span>
+&nbsp;
+    <span class="kw2">file</span> <span class="sy0">=</span> request.<span class="me1">files</span><span class="br0">[</span><span class="st0">'file'</span><span class="br0">]</span>
+    <span class="kw1">if</span> <span class="kw2">file</span>.<span class="me1">filename</span> <span class="sy0">==</span> <span class="st0">''</span>:
+        <span class="kw1">return</span> <span class="st0">'No selected file'</span>
+&nbsp;
+    file_path <span class="sy0">=</span> <span class="st0">'uploads/'</span> + <span class="kw2">file</span>.<span class="me1">filename</span>
+    <span class="kw2">file</span>.<span class="me1">save</span><span class="br0">(</span>file_path<span class="br0">)</span>
+    upload_file_to_ftp<span class="br0">(</span>file_path<span class="sy0">,</span> <span class="kw2">file</span>.<span class="me1">filename</span><span class="br0">)</span>
+&nbsp;
+    <span class="kw1">return</span> <span class="st0">'File uploaded successfully'</span>
+&nbsp;
+&nbsp;
+<span class="sy0">@</span>app.<span class="me1">route</span><span class="br0">(</span><span class="st0">'/download'</span><span class="br0">)</span>
+<span class="kw1">def</span> download<span class="br0">(</span><span class="br0">)</span>:
+    files_on_ftp <span class="sy0">=</span> <span class="br0">[</span><span class="st0">'file_name.txt'</span><span class="sy0">,</span> <span class="st0">'file_name2.txt'</span><span class="br0">]</span>  <span class="co1"># List of files on FTP server</span>
+    <span class="kw1">return</span> render_template<span class="br0">(</span><span class="st0">'download.html'</span><span class="sy0">,</span> files<span class="sy0">=</span>files_on_ftp<span class="br0">)</span>
+&nbsp;
+<span class="kw1">if</span> __name__ <span class="sy0">==</span> <span class="st0">'__main__'</span>:
+    app.<span class="me1">run</span><span class="br0">(</span>debug<span class="sy0">=</span><span class="kw2">True</span><span class="br0">)</span>
+&nbsp;</pre>
+
+<p>
+'@app.route' is a decorator in Flask used to associate <abbr title="Uniform Resource Locator">URL</abbr> routes with view functions. It allows you to specify which <abbr title="Uniform Resource Locator">URL</abbr> should trigger a specific function in your Flask application.
+</p>
+
+<p>
+<strong>Create <abbr title="HyperText Markup Language">HTML</abbr> templates in your work directory</strong><br>
+
+'render_template' is a function in Flask used to render <abbr title="HyperText Markup Language">HTML</abbr> templates. It takes the name of the template file as an argument and returns the rendered <abbr title="HyperText Markup Language">HTML</abbr> content to be displayed in the browser.
+</p>
+
+<p>
+<strong>index.html (For upload)</strong>
+</p>
+<pre class="code html4strict"><span class="sc0">&lt;!DOCTYPE html&gt;</span>
+<span class="sc2">&lt;<a href="http://december.com/html/4/element/html.html"><span class="kw2">html</span></a> <span class="kw3">lang</span><span class="sy0">=</span><span class="st0">"en"</span>&gt;</span>
+<span class="sc2">&lt;<a href="http://december.com/html/4/element/head.html"><span class="kw2">head</span></a>&gt;</span>
+    <span class="sc2">&lt;<a href="http://december.com/html/4/element/meta.html"><span class="kw2">meta</span></a> <span class="kw3">charset</span><span class="sy0">=</span><span class="st0">"UTF-8"</span>&gt;</span>
+    <span class="sc2">&lt;<a href="http://december.com/html/4/element/meta.html"><span class="kw2">meta</span></a> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">"viewport"</span> <span class="kw3">content</span><span class="sy0">=</span><span class="st0">"width=device-width, initial-scale=1.0"</span>&gt;</span>
+    <span class="sc2">&lt;<a href="http://december.com/html/4/element/title.html"><span class="kw2">title</span></a>&gt;</span>File Upload<span class="sc2">&lt;<span class="sy0">/</span><a href="http://december.com/html/4/element/title.html"><span class="kw2">title</span></a>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><a href="http://december.com/html/4/element/head.html"><span class="kw2">head</span></a>&gt;</span>
+<span class="sc2">&lt;<a href="http://december.com/html/4/element/body.html"><span class="kw2">body</span></a>&gt;</span>
+    <span class="sc2">&lt;<a href="http://december.com/html/4/element/h1.html"><span class="kw2">h1</span></a>&gt;</span>File Upload<span class="sc2">&lt;<span class="sy0">/</span><a href="http://december.com/html/4/element/h1.html"><span class="kw2">h1</span></a>&gt;</span>
+    <span class="sc2">&lt;<a href="http://december.com/html/4/element/form.html"><span class="kw2">form</span></a> <span class="kw3">action</span><span class="sy0">=</span><span class="st0">"/upload"</span> <span class="kw3">method</span><span class="sy0">=</span><span class="st0">"post"</span> <span class="kw3">enctype</span><span class="sy0">=</span><span class="st0">"multipart/form-data"</span>&gt;</span>
+        <span class="sc2">&lt;<a href="http://december.com/html/4/element/input.html"><span class="kw2">input</span></a> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">"file"</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">"file"</span>&gt;</span>
+        <span class="sc2">&lt;<a href="http://december.com/html/4/element/button.html"><span class="kw2">button</span></a> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">"submit"</span>&gt;</span>Upload<span class="sc2">&lt;<span class="sy0">/</span><a href="http://december.com/html/4/element/button.html"><span class="kw2">button</span></a>&gt;</span>
+    <span class="sc2">&lt;<span class="sy0">/</span><a href="http://december.com/html/4/element/form.html"><span class="kw2">form</span></a>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><a href="http://december.com/html/4/element/body.html"><span class="kw2">body</span></a>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><a href="http://december.com/html/4/element/html.html"><span class="kw2">html</span></a>&gt;</span></pre>
+
+<p>
+<strong>download.html (For displaying download links</strong>
+</p>
+<pre class="code html4strict"><span class="sc0">&lt;!DOCTYPE html&gt;</span>
+<span class="sc2">&lt;<a href="http://december.com/html/4/element/html.html"><span class="kw2">html</span></a> <span class="kw3">lang</span><span class="sy0">=</span><span class="st0">"en"</span>&gt;</span>
+<span class="sc2">&lt;<a href="http://december.com/html/4/element/head.html"><span class="kw2">head</span></a>&gt;</span>
+    <span class="sc2">&lt;<a href="http://december.com/html/4/element/meta.html"><span class="kw2">meta</span></a> <span class="kw3">charset</span><span class="sy0">=</span><span class="st0">"UTF-8"</span>&gt;</span>
+    <span class="sc2">&lt;<a href="http://december.com/html/4/element/meta.html"><span class="kw2">meta</span></a> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">"viewport"</span> <span class="kw3">content</span><span class="sy0">=</span><span class="st0">"width=device-width, initial-scale=1.0"</span>&gt;</span>
+    <span class="sc2">&lt;<a href="http://december.com/html/4/element/title.html"><span class="kw2">title</span></a>&gt;</span>File Download<span class="sc2">&lt;<span class="sy0">/</span><a href="http://december.com/html/4/element/title.html"><span class="kw2">title</span></a>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><a href="http://december.com/html/4/element/head.html"><span class="kw2">head</span></a>&gt;</span>
+<span class="sc2">&lt;<a href="http://december.com/html/4/element/body.html"><span class="kw2">body</span></a>&gt;</span>
+    <span class="sc2">&lt;<a href="http://december.com/html/4/element/h1.html"><span class="kw2">h1</span></a>&gt;</span>File Download<span class="sc2">&lt;<span class="sy0">/</span><a href="http://december.com/html/4/element/h1.html"><span class="kw2">h1</span></a>&gt;</span>
+    <span class="sc2">&lt;<a href="http://december.com/html/4/element/ul.html"><span class="kw2">ul</span></a>&gt;</span>
+        {% for file_name in files %}
+            <span class="sc2">&lt;<a href="http://december.com/html/4/element/li.html"><span class="kw2">li</span></a>&gt;&lt;<a href="http://december.com/html/4/element/a.html"><span class="kw2">a</span></a> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">"/download/{{ file_name }}"</span>&gt;</span>{{ file_name }}<span class="sc2">&lt;<span class="sy0">/</span><a href="http://december.com/html/4/element/a.html"><span class="kw2">a</span></a>&gt;&lt;<span class="sy0">/</span><a href="http://december.com/html/4/element/li.html"><span class="kw2">li</span></a>&gt;</span>
+        {% endfor %}
+    <span class="sc2">&lt;<span class="sy0">/</span><a href="http://december.com/html/4/element/ul.html"><span class="kw2">ul</span></a>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><a href="http://december.com/html/4/element/body.html"><span class="kw2">body</span></a>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><a href="http://december.com/html/4/element/html.html"><span class="kw2">html</span></a>&gt;</span></pre>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Customize Application to use FTP&quot;,&quot;hid&quot;:&quot;customize_application_to_use_ftp&quot;,&quot;codeblockOffset&quot;:26,&quot;secid&quot;:10,&quot;range&quot;:&quot;10694-14311&quot;} -->
+<h3 class="sectionedit11" id="testing">Testing</h3>
+<div class="level3">
+
+<p>
+Now that our application is done, we can go ahead and test it to see if it works.
+<strong>REMEMBER TO BE IN YOUR VIRTUAL ENVIRONMENT BEFORE RUNNING THE PROGRAM!!</strong><br>
+
+Run the program by typing the below: 
+</p>
+<pre class="code">python run.py</pre>
+
+<p>
+Upload to a file with extension .txt in your program
+</p>
+
+<p>
+<a href="http://10.0.2.15:8000/lib/exe/detail.php?id=start&amp;media=upload_page.png" class="media" title="upload_page.png"><img src="218056701_NYEMBE_AJ_2024_WikiPage_files/upload_page.png" class="media" loading="lazy" alt=""></a>
+</p>
+
+<p>
+Show a list of the files located in your '/srv/ftp/' directory
+</p>
+<pre class="code">ls -la /srv/ftp/</pre>
+
+<p>
+You should see an output, with the files you uploaded in your Flask Application
+</p>
+<pre class="file">total 16
+drwxr-xr-x  2 root ftpusers 4096 May  8 10:00 .
+drwxr-xr-x 15 root root     4096 May  8 09:58 ..
+-rw-r--r--  1 root ftpusers   56 May  8 09:59 file_name.txt
+-rw-r--r--  1 root ftpusers   72 May  8 10:00 file_name2.txt</pre>
+
+<p>
+You have successfully uploaded files to your server, by using the web application running with Flask 
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Testing&quot;,&quot;hid&quot;:&quot;testing&quot;,&quot;codeblockOffset&quot;:30,&quot;secid&quot;:11,&quot;range&quot;:&quot;14312-15155&quot;} -->
+<h2 class="sectionedit12" id="configure_flask_application_for_https">Configure Flask Application for HTTPS</h2>
+<div class="level2">
+
+<p>
+As we have seen, Flask runs on its own server and typically runs on `<a href="http://127.0.0.1:5000/" class="urlextern" title="http://127.0.0.1:5000" rel="ugc nofollow">http://127.0.0.1:5000</a>`.
+ While this is acceptable for development purposes, it's important to 
+note that HTTP is not a secure protocol. However, adding extra security 
+to our application is always a wise choice. Therefore, in this section, 
+we will explore how to configure our Flask application to run on HTTPS 
+instead of HTTP.
+</p>
+
+<p>
+First we create a directory to store our Private Key and Certificate. 
+Place the keys in a folder that will be accessible by your application
+</p>
+<pre class="code">sudo mkdir ~/Documents/flask-https</pre>
+
+<p>
+Create a self-signed Key and Cert for the application
+</p>
+<pre class="code">sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout ~/Documents/flask-https/cert.pem -out ~/Documents/flask-https/key.pem</pre>
+
+<p>
+Once the private key and certificate have been created, navigate to your
+ applications directory main file, in our case, its run.py
+You can use any editor or IDE you want to open the file
+</p>
+<pre class="code">sudo nano ~/Documents/FlaskApp/run.py</pre>
+
+<p>
+Make the following changes to your code: 
+</p>
+<pre class="code python"><ol><li class="li1"><div class="de1">dir_root <span class="sy0">=</span> <span class="kw3">os</span>.<span class="me1">path</span>.<span class="me1">expanduser</span><span class="br0">(</span><span class="st0">'~/Documents'</span><span class="br0">)</span></div></li><li class="li1"><div class="de1">flask_dir <span class="sy0">=</span> <span class="kw3">os</span>.<span class="me1">path</span>.<span class="me1">join</span><span class="br0">(</span>dir_root<span class="sy0">,</span> <span class="st0">'flask-https'</span><span class="br0">)</span></div></li><li class="li1"><div class="de1">&nbsp;</div></li><li class="li1"><div class="de1"><span class="kw1">if</span> __name__ <span class="sy0">==</span> <span class="st0">'__main__'</span>:</div></li><li class="li2 ln-xtra"><div class="de2">    context <span class="sy0">=</span> <span class="br0">(</span>f<span class="st0">'{flask_dir}/cert.pem'</span><span class="sy0">,</span> f<span class="st0">'{flask_dir}/key.pem'</span><span class="br0">)</span></div></li><li class="li1 ln-xtra"><div class="de1">    app.<span class="me1">run</span><span class="br0">(</span>debug<span class="sy0">=</span><span class="kw2">True</span><span class="sy0">,</span> host<span class="sy0">=</span><span class="st0">'0.0.0.0'</span><span class="sy0">,</span> ssl_context<span class="sy0">=</span>context<span class="br0">)</span></div></li></ol></pre>
+
+<p>
+Let's get into what we just did:
+</p>
+<ul>
+<li class="level1"><div class="li"> Go back to <span class="curid"><a href="http://10.0.2.15:8000/doku.php?id=start#optionalconfigure_ssl_tls_on_ftp" class="wikilink1" title="start" data-wiki-id="start"> FTP SSL</a></span> in case you skipped it to understand why we use SSL/TLS encryption, and why its self-signed</div>
+</li>
+<li class="level1"><div class="li"> We navigate to the folder containing the key and cert, in this case '~/Documents/flask-https/'.</div>
+</li>
+<li class="level1"><div class="li"> When you type ssl_context=context in
+ Python code, particularly in the context of web server setups like 
+Flask applications, it typically means that you are providing an SSL 
+context object to configure the SSL/TLS settings for secure connections.
+ </div>
+</li>
+<li class="level1"><div class="li"> Finally, we set out application to run on all network interfaces using the host='0.0.0.0' parameter.</div>
+</li>
+</ul>
+
+<p>
+In this image, we can see that our communication in the web application 
+uses encrypted communication. And you can then view the self-signed 
+certificate from the browser.
+<a href="http://10.0.2.15:8000/lib/exe/detail.php?id=start&amp;media=ssl.png" class="media" title="ssl.png"><img src="218056701_NYEMBE_AJ_2024_WikiPage_files/ssl.png" class="media" loading="lazy" alt=""></a>
+</p>
+
+<p>
+You are now securely running your Flask Web Application on your local 
+machine, using SSL/TLS encryption for both File Transfer Protocol, and 
+Hyper-Text Transfer Protocol.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Configure Flask Application for HTTPS&quot;,&quot;hid&quot;:&quot;configure_flask_application_for_https&quot;,&quot;codeblockOffset&quot;:33,&quot;secid&quot;:12,&quot;range&quot;:&quot;15156-17614&quot;} -->
+<h1 class="sectionedit13" id="back-up_store_on_cloud_github">Back-up store on Cloud (Github)</h1>
+<div class="level1">
+
+<p>
+We can add an extra layer of back-up functionality in your application 
+using cloud services. There are various cloud services available out 
+there that you can integrate into your own custom application. These 
+include:
+</p>
+<ul>
+<li class="level1"><div class="li"> AWS: <a href="https://aws.amazon.com/" class="urlextern" title="https://aws.amazon.com/" rel="ugc nofollow">https://aws.amazon.com/</a></div>
+</li>
+<li class="level1"><div class="li"> Azure: <a href="https://azure.microsoft.com/en-us" class="urlextern" title="https://azure.microsoft.com/en-us" rel="ugc nofollow">https://azure.microsoft.com/en-us</a></div>
+</li>
+</ul>
+
+<p>
+Just to name the leading ones that offer their services at a reasonable 
+price, and they offer a “free-tier” in their products. Check these out 
+by clicking either one of the links above for more information on the 
+services and products they offer.
+</p>
+
+<p>
+But for this particular project, we would like to be able to back our 
+files in a repository that provides us with source version control for 
+the files we will be uploading to <abbr title="File Transfer Protocol">FTP</abbr>. And the tool that suited all our requirements was Github. And it is also free <img src="218056701_NYEMBE_AJ_2024_WikiPage_files/smile2.svg" class="icon smiley" alt="=)">
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Back-up store on Cloud (Github)&quot;,&quot;hid&quot;:&quot;back-up_store_on_cloud_github&quot;,&quot;codeblockOffset&quot;:37,&quot;secid&quot;:13,&quot;range&quot;:&quot;17615-18468&quot;} -->
+<h2 class="sectionedit14" id="configuring_github">Configuring Github</h2>
+<div class="level2">
+
+<p>
+Firstly, you will need to create a github account.
+Go to <span class="curid"><a href="http://10.0.2.15:8000/doku.php?id=start#github_repository" class="wikilink1" title="start" data-wiki-id="start"> Github</a></span>, which will lead you to the Github page where you can get started.
+</p>
+
+<p>
+If you already have an account, you can continue following along. 
+</p>
+
+<p>
+<strong>Github Quick start</strong>
+Once your account has been created, you need to create a repository via the Web <abbr title="Graphical User Interface">GUI</abbr>
+ in which your flask application will interact with for backups.
+Please visit each of these links to create your first repository, 
+cloning your remote repo onto your local machine, and setting up git 
+credentials on your local repo.
+</p>
+<ul>
+<li class="level1"><div class="li"> Create Repo: <a href="https://docs.github.com/en/repositories/creating-and-managing-repositories/quickstart-for-repositories" class="urlextern" title="https://docs.github.com/en/repositories/creating-and-managing-repositories/quickstart-for-repositories" rel="ugc nofollow">https://docs.github.com/en/repositories/creating-and-managing-repositories/quickstart-for-repositories</a></div>
+</li>
+<li class="level1"><div class="li"> Clone Repository on local machine: <a href="https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository" class="urlextern" title="https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository" rel="ugc nofollow">https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository</a></div>
+</li>
+<li class="level1"><div class="li"> Set up Github: <a href="https://docs.github.com/en/get-started/getting-started-with-git/set-up-git" class="urlextern" title="https://docs.github.com/en/get-started/getting-started-with-git/set-up-git" rel="ugc nofollow">https://docs.github.com/en/get-started/getting-started-with-git/set-up-git</a></div>
+</li>
+<li class="level1"><div class="li"> Cache Github credentials: <a href="https://docs.github.com/en/get-started/getting-started-with-git/caching-your-github-credentials-in-git" class="urlextern" title="https://docs.github.com/en/get-started/getting-started-with-git/caching-your-github-credentials-in-git" rel="ugc nofollow">https://docs.github.com/en/get-started/getting-started-with-git/caching-your-github-credentials-in-git</a></div>
+</li>
+</ul>
+
+<p>
+Once all configurations are all set up, we can go ahead with the implementation of integrating Github into our project. 
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Configuring Github&quot;,&quot;hid&quot;:&quot;configuring_github&quot;,&quot;codeblockOffset&quot;:37,&quot;secid&quot;:14,&quot;range&quot;:&quot;18469-19673&quot;} -->
+<h2 class="sectionedit15" id="integrating_github_into_flask_application">Integrating Github into Flask Application</h2>
+<div class="level2">
+
+<p>
+Change directory to your local repo on your machine, this will be where we save the downloaded files from <abbr title="File Transfer Protocol">FTP</abbr>. For this wiki, we will place the repo in the following path:
+</p>
+<pre class="code">cd ~/Desktop/gitflaskapp/remote-repo/</pre>
+
+<p>
+We would like to backup our files to github automatically without any 
+manual effort from the user who will be uploading their file to <abbr title="File Transfer Protocol">FTP</abbr>. 
+</p>
+
+<p>
+In order to do that, we will have to amend the 'def upload()' route function in our already existing flask code.
+</p>
+
+<p>
+But first we have to install the git module within our python virtual environment, in case you forgot what that is, <span class="curid"><a href="http://10.0.2.15:8000/doku.php?id=start#create_flask_application" class="wikilink1" title="start" data-wiki-id="start"> You need to activate your environment</a></span>
+</p>
+<pre class="code">pip install gitpython</pre>
+
+<p>
+This module will allow you interact with git using python code. 
+</p>
+
+<p>
+We will create a new function that will allow us to connect to our git repo and commit files to the remote repo seamlessly.
+</p>
+<pre class="code python"><ol><li class="li1 ln-xtra"><div class="de1"><span class="kw1">from</span> git <span class="kw1">import</span> Repo</div></li><li class="li1"><div class="de1">&nbsp;</div></li><li class="li1"><div class="de1"><span class="kw1">def</span> git_upload<span class="br0">(</span>git_local_dir<span class="br0">)</span>:</div></li><li class="li1"><div class="de1">	<span class="kw3">os</span>.<span class="me1">chdir</span><span class="br0">(</span>git_local_dir<span class="br0">)</span></div></li><li class="li2"><div class="de2">	repo <span class="sy0">=</span> Repo<span class="br0">(</span>git_local_dir<span class="br0">)</span></div></li><li class="li1"><div class="de1">	<span class="kw1">print</span><span class="br0">(</span>f<span class="st0">'this is the repo: {repo}'</span><span class="br0">)</span></div></li><li class="li1"><div class="de1">	repo.<span class="me1">git</span>.<span class="me1">add</span><span class="br0">(</span><span class="st0">'--all'</span><span class="br0">)</span></div></li><li class="li1"><div class="de1">	<span class="kw1">print</span><span class="br0">(</span>f<span class="st0">'added to git'</span><span class="br0">)</span></div></li><li class="li1"><div class="de1">	repo.<span class="me1">index</span>.<span class="me1">commit</span><span class="br0">(</span>f<span class="st0">'Automated Commit'</span><span class="br0">)</span></div></li><li class="li2"><div class="de2">	<span class="kw1">print</span><span class="br0">(</span><span class="st0">'commited'</span><span class="br0">)</span></div></li><li class="li1"><div class="de1">	origin <span class="sy0">=</span> repo.<span class="me1">remote</span><span class="br0">(</span>name<span class="sy0">=</span><span class="st0">'origin'</span><span class="br0">)</span></div></li><li class="li1"><div class="de1">	<span class="kw1">print</span><span class="br0">(</span>f<span class="st0">'origin: {origin}'</span><span class="br0">)</span></div></li><li class="li1"><div class="de1">	origin.<span class="me1">push</span><span class="br0">(</span>refspec<span class="sy0">=</span><span class="st0">'main'</span><span class="br0">)</span></div></li></ol></pre>
+
+<p>
+So to briefly explain this code, we commit and push from our local git repo to the remote using the git module.
+</p>
+
+<p>
+Go into your flask application and amend the following code in the 'upload()' function
+</p>
+<pre class="code python"><ol><li class="li1"><div class="de1">    file_path <span class="sy0">=</span> <span class="st0">'uploads/'</span> + <span class="kw2">file</span>.<span class="me1">filename</span></div></li><li class="li1"><div class="de1">    <span class="kw2">file</span>.<span class="me1">save</span><span class="br0">(</span>file_path<span class="br0">)</span></div></li><li class="li1"><div class="de1">    upload_file_to_ftp<span class="br0">(</span>file_path<span class="sy0">,</span> <span class="kw2">file</span>.<span class="me1">filename</span><span class="br0">)</span></div></li><li class="li1"><div class="de1">&nbsp;</div></li><li class="li2"><div class="de2">    <span class="co1">#Path to git repo</span></div></li><li class="li1 ln-xtra"><div class="de1">    git_local_path <span class="sy0">=</span> <span class="st0">'~/Desktop/gitflaskapp/remote-repo/'</span></div></li><li class="li1 ln-xtra"><div class="de1">    download_file_from_ftp<span class="br0">(</span><span class="kw2">file</span>.<span class="me1">filename</span><span class="sy0">,</span> git_local_path<span class="br0">)</span></div></li><li class="li1 ln-xtra"><div class="de1">    git_upload<span class="br0">(</span>git_local_path<span class="br0">)</span></div></li></ol></pre>
+
+<p>
+This will automatically download the specified file from your <abbr title="File Transfer Protocol">FTP</abbr>
+ server when you upload a file normally, save it on your local git 
+repository, and push the files to the remote repo using the 
+'git_upload()' function. All in a single click of a button. 
+</p>
+
+<p>
+Like Prof. Van Niekerk once said, “20% of the configuration, equates to 80% of the work”, or something like that <img src="218056701_NYEMBE_AJ_2024_WikiPage_files/cool.svg" class="icon smiley" alt="8-)">
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Integrating Github into Flask Application&quot;,&quot;hid&quot;:&quot;integrating_github_into_flask_application&quot;,&quot;codeblockOffset&quot;:37,&quot;secid&quot;:15,&quot;range&quot;:&quot;19674-21999&quot;} -->
+<h1 class="sectionedit16" id="accessing_your_flask_application_on_host_os">Accessing Your Flask Application on Host OS</h1>
+<div class="level1">
+
+<p>
+We have done most of the coding and implementation of the application as
+ a whole and you can comfortably access your application from your 
+OpenSuse <abbr title="Operating System">OS</abbr> through either <a href="https://127.0.0.1:5000/" class="urlextern" title="https://127.0.0.1:5000" rel="ugc nofollow">https://127.0.0.1:5000</a>. 
+</p>
+
+<p>
+Now we can add a cool feature to the entire project, by allowing external users who are on the same network to <span class="curid"><a href="http://10.0.2.15:8000/doku.php?id=start#accessing_application" class="wikilink1" title="start" data-wiki-id="start"> access your application</a></span> from their own independent <abbr title="Operating System">OS</abbr> browser. 
+</p>
+
+<p>
+Firstly, we have to enable a port using FirewallD to allow incoming network traffic on that specific port. 
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Accessing Your Flask Application on Host OS&quot;,&quot;hid&quot;:&quot;accessing_your_flask_application_on_host_os&quot;,&quot;codeblockOffset&quot;:41,&quot;secid&quot;:16,&quot;range&quot;:&quot;22000-22569&quot;} -->
+<h2 class="sectionedit17" id="installing_firewalld">Installing FirewallD</h2>
+<div class="level2">
+
+<p>
+Install FirewallD in OpenSuse.
+</p>
+<pre class="code">sudo zypper ref
+sudo zypper update
+sudo zypper install firewalld</pre>
+
+<p>
+Enable the firewall at boot time using the systemctl command:
+</p>
+<pre class="code">sudo systemctl enable firewalld
+sudo systemctl start firewalld</pre>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Installing FirewallD&quot;,&quot;hid&quot;:&quot;installing_firewalld&quot;,&quot;codeblockOffset&quot;:41,&quot;secid&quot;:17,&quot;range&quot;:&quot;22570-22856&quot;} -->
+<h2 class="sectionedit18" id="allowing_connections_on_port">Allowing connections on port</h2>
+<div class="level2">
+
+<p>
+Once FirewallD has been installed and enabled. We configure the 
+firewall's rules to permit incoming traffic on port 5000, which is the 
+port our flask application is running on. 
+</p>
+<pre class="code">sudo firewall-cmd --zone=public --add-port=5000/tcp --permanent</pre>
+
+<p>
+To read up more on what the parameters mean, and getting more knowledge on firewall-cmd CLI utility, go to link: <a href="https://www.cyberciti.biz/faq/set-up-a-firewall-using-firewalld-on-opensuse-linux/" class="urlextern" title="https://www.cyberciti.biz/faq/set-up-a-firewall-using-firewalld-on-opensuse-linux/" rel="ugc nofollow">https://www.cyberciti.biz/faq/set-up-a-firewall-using-firewalld-on-opensuse-linux/</a>
+</p>
+
+<p>
+Execute below command to refresh and reload the firewall with your new configurations
+</p>
+<pre class="code">sudo firewall-cmd --reload</pre>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Allowing connections on port&quot;,&quot;hid&quot;:&quot;allowing_connections_on_port&quot;,&quot;codeblockOffset&quot;:43,&quot;secid&quot;:18,&quot;range&quot;:&quot;22857-23484&quot;} -->
+<h2 class="sectionedit19" id="port_forwarding">Port Forwarding</h2>
+<div class="level2">
+
+<p>
+By default, your VM is created with a network connection in NAT mode.
+</p>
+<ul>
+<li class="level1"><div class="li"> NAT mode: The guest <abbr title="Operating System">OS</abbr> can access the outside world, but behind the IP of the Host <abbr title="Operating System">OS</abbr>. </div>
+</li>
+<li class="level1"><div class="li"> The host and other machines cannot access the Guest.</div>
+</li>
+</ul>
+
+<p>
+However, when we use Port Forwarding, the Host <abbr title="Operating System">OS</abbr>
+ and external users can access the Guest. This is important for us 
+because our services are running on a virtual machine, and we would like
+ to make these services accessible to the outside world. 
+</p>
+
+<p>
+You can enable port forwarding for your VM following the steps below on your Virtual Box:
+</p>
+<ul>
+<li class="level1"><div class="li"> Highlight the VM you are working with and select Settings &gt; Network</div>
+</li>
+</ul>
+
+<p>
+<a href="http://10.0.2.15:8000/lib/exe/detail.php?id=start&amp;media=vm6.png" class="media" title="vm6.png"><img src="218056701_NYEMBE_AJ_2024_WikiPage_files/vm6.png" class="media" loading="lazy" alt=""></a>
+</p>
+
+<p>
+Click advanced drop down from window 
+</p>
+
+<p>
+Then click port forwarding button
+</p>
+
+<p>
+<a href="http://10.0.2.15:8000/lib/exe/detail.php?id=start&amp;media=vm2.png" class="media" title="vm2.png"><img src="218056701_NYEMBE_AJ_2024_WikiPage_files/vm2.png" class="media" loading="lazy" alt=""></a>
+</p>
+
+<p>
+From then, you will see a similar window to the image below. This is where you will configure your rule
+</p>
+
+<p>
+<a href="http://10.0.2.15:8000/lib/exe/detail.php?id=start&amp;media=vm4.png" class="media" title="vm4.png"><img src="218056701_NYEMBE_AJ_2024_WikiPage_files/vm4.png" class="media" loading="lazy" alt=""></a>
+</p>
+
+<p>
+Fill in the rule as follows:
+</p>
+<ul>
+<li class="level1"><div class="li"> Name: FLASK-SITE</div>
+</li>
+<li class="level1"><div class="li"> Protocol: TCP</div>
+</li>
+<li class="level1"><div class="li"> Host IP: 0.0.0.0</div>
+</li>
+<li class="level1"><div class="li"> Host Port: 5000 'Port where you want to access the application on Host <abbr title="Operating System">OS</abbr>'</div>
+</li>
+<li class="level1"><div class="li"> Guest IP: &lt;can be left blank&gt;; add Guest <abbr title="Operating System">OS</abbr> IP address: e.g 10.0.2.15</div>
+</li>
+<li class="level1"><div class="li"> Guest Port: 5000 'This is the port where the application is running on the guest'</div>
+</li>
+</ul>
+
+<p>
+After all configurations
+</p>
+<ul>
+<li class="level1"><div class="li"> Shut down the Virtual Machine</div>
+</li>
+<li class="level1"><div class="li"> Quit VirtualBox &amp; Restart</div>
+</li>
+<li class="level1"><div class="li"> Start Virtual Machine</div>
+</li>
+</ul>
+
+<p>
+After all has been done, port forwarding has been configured on 
+VirutalBox, and the flask application can be accessed via the Host <abbr title="Operating System">OS</abbr> or other external devices that are on the same network. 
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Port Forwarding&quot;,&quot;hid&quot;:&quot;port_forwarding&quot;,&quot;codeblockOffset&quot;:45,&quot;secid&quot;:19,&quot;range&quot;:&quot;23485-25004&quot;} -->
+<h1 class="sectionedit20" id="enjoy_make_sure_you_explore_all_things_mentioned_here_further_in_your_own_time_and_switch_to_linux">Enjoy!! Make sure you explore all things mentioned here further in your own time. And SWITCH TO LINUX!!</h1>
+<div class="level1">
+
+<p>
+And that brings an end to our Wiki, which focussed on creating a Flask application which makes use of <abbr title="File Transfer Protocol">FTP</abbr> and Github for file storage. We also played around with public and private keys, and encrypted the communication in our <abbr title="File Transfer Protocol">FTP</abbr> and HTTP. Making communication over those channel secure from eavesdropping. 
+</p>
+
+<p>
+Hope you have as much fun as i did doing this project. Enjoy <img src="218056701_NYEMBE_AJ_2024_WikiPage_files/smile2.svg" class="icon smiley" alt="=)"><img src="218056701_NYEMBE_AJ_2024_WikiPage_files/smile2.svg" class="icon smiley" alt="=)">
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Enjoy!! Make sure you explore all things mentioned here further in your own time. And SWITCH TO LINUX!!&quot;,&quot;hid&quot;:&quot;enjoy_make_sure_you_explore_all_things_mentioned_here_further_in_your_own_time_and_switch_to_linux&quot;,&quot;codeblockOffset&quot;:45,&quot;secid&quot;:20,&quot;range&quot;:&quot;25005-&quot;} --></div>
+
+
+</body></html>
